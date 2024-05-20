@@ -1,17 +1,11 @@
 plutocam
 =========
 
-Python package to communicate with a drone's lewei camera module. This module
-does not control the drone's flight yet.
+Python package to communicate with a Pluto's camera module. 
 
 ## Example Command-line Usage
 
 #### Stream live video
-```
-$ plutocam stream start --out-file - | ffplay -i -
-```
-
-#### Stream live video, without buffer or "lag"
 ```
 $ plutocam stream start --out-file - | ffplay -i -fflags nobuffer -flags low_delay -probesize 32 -sync ext -
 ```
