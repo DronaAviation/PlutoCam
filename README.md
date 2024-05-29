@@ -1,55 +1,51 @@
-plutocam
-=========
+# Pluto Camera Live Stream Setup Guide
 
-Python package to communicate with a Pluto's camera module. 
+## Prerequisites
 
-## Example Command-line Usage
+Before setting up the Pluto camera live stream, ensure you have the following prerequisites installed on your system:
 
-#### Stream live video
-```
-$ plutocam stream start --out-file - | ffplay -i -fflags nobuffer -flags low_delay -probesize 32 -sync ext -
-```
+- [Python](https://www.python.org/downloads/) (if not installed already)
+- [FFmpeg](https://ffmpeg.org/download.html) (for your operating system)
 
-#### Record live video then replay later
-```
-$ plutocam rec start
-$ plutocam rec stop
-$ plutocam rec list
-index  start              duration  path
-[  0]  20200604_04:01:27        95  /mnt/Video/20200604-040126.mp4
-[  1]  20200604_04:10:40        20  /mnt/Video/20200604-041040.mp4
-success
-$ plutocam rec play 0 --out-file - | ffplay -i -
-```
+## Installation Steps
 
-## Example Module Usage
+### Step 1: Download FFmpeg
 
-#### Creating the object
-```
->>> import plutocam
->>> drone = plutocam.LWDrone()
-```
+Download FFmpeg from one of the following sources:
+- [Official FFmpeg Website](https://ffmpeg.org/download.html)
+- [FFmpeg Builds on GitHub](https://github.com/BtbN/FFmpeg-Builds/releases)
 
-#### Stream live video
-```
->>> for frame in drone.start_video_stream():
->>>     sys.stdout.buffer.write(frame.frame_bytes)
+### Step 2: Install FFmpeg
+
+Follow the installation instructions based on your operating system:
+- **Windows:** [FFmpeg Installation Guide for Windows](https://phoenixnap.com/kb/ffmpeg-windows)
+- **Linux:** [Install FFmpeg on Ubuntu](https://phoenixnap.com/kb/install-ffmpeg-ubuntu)
+- **Mac:** [FFmpeg Installation Guide for Mac](https://phoenixnap.com/kb/ffmpeg-mac)
+
+### Step 3: Install Python
+
+If Python is not installed on your system, download and install it from the [official Python website](https://www.python.org/downloads/).
+
+### Step 4: Install pylwdrone
+
+Install the `plutocam` library using pip:
+```bash
+pip install plutocam
 ```
 
-#### Get a file
-```
->>> with open('video.mp4', 'wb') as fp:
->>>     drone.get_file('/mnt/Video/20200604-041040.mp4', fp)
-```
+## Streaming Setup
+### Step 5: Connect to Pluto Camera
+Ensure you are connected to the Pluto camera before proceeding.
 
-#### Take a picture
-```
->>> with open('picture.jpg', 'wb') as fp:
->>>     fp.write(drone.take_picture().data)
-```
+### Step 6: Start the Stream
+Open a terminal and run the following command:
 
-#### Start and stop recording
+```bash
+plutocam stream start --out-file - | ffplay -i -fflags nobuffer -flags low_delay -probesize 32 -sync ext -
 ```
->>> drone.set_record_plan()
->>> drone.set_record_plan(RecordPlan(active=False))
-```
+This command initiates the live stream from the Pluto camera using pylwdrone and FFmpeg.
+
+### Additional Resources
+For more information and advanced usage, refer to the [Pylwdrone GitHub repository](https://github.com/meekworth/pylwdrone).
+
+## Now, you are ready to enjoy live streaming from your Pluto camera!
