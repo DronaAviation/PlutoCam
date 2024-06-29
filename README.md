@@ -26,7 +26,7 @@ Follow the installation instructions based on your operating system:
 
 If Python is not installed on your system, download and install it from the [official Python website](https://www.python.org/downloads/).
 
-### Step 4: Install pylwdrone
+### Step 4: Install plutocam
 
 Install the `plutocam` library using pip:
 ```bash
