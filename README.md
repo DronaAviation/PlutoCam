@@ -43,7 +43,7 @@ Open a terminal and run the following command:
 ```bash
 plutocam stream start --out-file - | ffplay -i -fflags nobuffer -flags low_delay -probesize 32 -sync ext -
 ```
-This command initiates the live stream from the Pluto camera using pylwdrone and FFmpeg.
+This command initiates the live stream from the Pluto camera using plutocam and FFmpeg.
 
 ### Additional Resources
 For more information and advanced usage, refer to the [Pylwdrone GitHub repository](https://github.com/meekworth/pylwdrone).
